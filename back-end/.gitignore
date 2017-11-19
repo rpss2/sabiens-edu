@@ -1,0 +1,4 @@
+# Compilador js gera tais arquivos, ignore-os
+
+*.js
+*.js.map
