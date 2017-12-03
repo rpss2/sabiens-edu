@@ -31,6 +31,7 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     });
 
     Then(/^Eu vejo uma mensagem de erro$/, async () => {
+        await $("td[name='msgErro']").getText().then(text => text === "Escola não cadastrada no sistema.");
     });
 
     Then(/^Continuo na mesma pagina$/, async () => {

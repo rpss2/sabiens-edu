@@ -19,6 +19,7 @@ export class EstSchoolComponent implements OnInit {
     sistema: string;
     noQuest : boolean = false;
     noSchool : boolean = false;
+    qtd : number;
 
     getForms(e: string, s: string) : void {
         this.isSchool(e);
@@ -27,6 +28,7 @@ export class EstSchoolComponent implements OnInit {
             var form = this.estatisticasService.getForms(s);
             if (form) {
                 this.formularios.push(form);
+                this.noQuest = false;
             } else {
                 this.noQuest = true;
             }
@@ -40,18 +42,23 @@ export class EstSchoolComponent implements OnInit {
         this.escolas = [];
         if(esc) {
             this.escolas.push(esc);
+            this.noSchool = false;
         } else {
             this.noSchool = true;
         }
     }
 
-    gerarEstatisticas() : void {
-        if(this.formularios.length > 0) {}
-    }
-
-    onMove(): void {
-        this.noQuest = false;
-        this.noSchool = false;
+    gerarEstatisticas(escola : string, sistema : string) : void {
+        var school;
+        this.qtd = 0;
+        if(this.formularios.length > 0) {
+            school = this.escolas[0];
+            var turmas = school.turmas;
+            for(let k in turmas) {
+                var turma = turmas[k].nome;
+                this.qtd += this.estatisticasService.getAlunos(escola, turma, sistema).length;
+            }
+        }
     }
 
     ngOnInit(): void {

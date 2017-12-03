@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html (mousemove)="onMove()">
+<html>
 <table>
     <tr>
         <td><label>Escola </label></td>
@@ -18,7 +18,7 @@
     <tr>
         <td><button (click)="isSchool(escola)">Verificar Escola</button></td>
         <td><button (click)="getForms(escola, sistema)">Listar Formularios</button></td>
-        <td><button (click)="gerarEstatisticas()">Ver Estatisticas</button></td>
+        <td><button (click)="gerarEstatisticas(escola, sistema)">Ver Estatisticas</button></td>
     </tr>
 </table>
 
@@ -26,6 +26,7 @@
     <tr>
         <th>Escola</th>
         <th>Formularios</th>
+        <th>Qtd de alunos que responderam</th>
     </tr>
     <tr>
         <td>
@@ -41,6 +42,9 @@
                     <td name="namelist">{{q.nome}}</td>
                 </tr>
             </table>
+        </td>
+        <td>
+            <input [(ngModel)]="qtd" disabled>
         </td>
     </tr>
 </table>
