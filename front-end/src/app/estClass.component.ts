@@ -23,9 +23,11 @@ export class EstClassComponent implements OnInit {
     turma: string;
     sistema: string;
     noStudent : boolean = false;
+    qtd : number;
 
     getAlunos(e: string, t: string, s: string): void {
         this.alunos = [];
+        this.qtd = 0;
         var alunos = this.estatisticasService.getAlunos(e, t, s);
         if(alunos) {
             this.alunos = alunos;
@@ -35,7 +37,10 @@ export class EstClassComponent implements OnInit {
     }
 
     gerarEstatisticas() : void {
-        if(this.alunos.length > 0) {}
+        this.getAlunos(this.escola, this.turma, this.sistema);
+        if(this.alunos.length > 0) {
+            this.qtd = this.alunos.length;
+        }
     }
 
     onMove(): void {

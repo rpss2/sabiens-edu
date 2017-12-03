@@ -25,9 +25,13 @@
 <table>
     <tr>
         <th>Alunos</th>
+        <th>Qtd de alunos que responderam</th>
     </tr>
     <tr *ngFor="let a of alunos" name="studentsList">
         <td name="namelist">{{a.nome}}</td>
+        <td>
+            <input [(ngModel)]="qtd" disabled>
+        </td>
     </tr>
 </table>
 </html>
