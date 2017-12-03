@@ -30,7 +30,13 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         await element(by.buttonText('Ver Estatisticas')).click();
     });
 
-    Then(/^Nada acontece e continuo na mesma pagina$/, async () => {
+    Then(/^Eu vejo uma mensagem de erro$/, async () => {
+        var alert = browser.switchTo().alert();
+        await expect(alert.getText()).to.eventually.equal("Escola não cadastrada.");
+        alert.accept();
+    });
+
+    Then(/^Continuo na mesma pagina$/, async () => {
         await browser.get("http://localhost:4200/estSchool");
     });
 })

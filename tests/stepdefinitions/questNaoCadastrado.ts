@@ -37,6 +37,6 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     });
 
     Then(/^Continuo na mesma pagina$/, async () => {
-        await browser.get("http://localhost:4200/estClass");
+        await browser.get("http://localhost:4200/estSchool");
     });
-})
+});
