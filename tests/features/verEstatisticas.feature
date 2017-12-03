@@ -16,3 +16,9 @@ Scenario: Ver estatisticas sobre o desempenho de uma escola para um questionario
   When Eu tentar ver estatisticas sobre a escola "CAp"
   Then Eu vejo uma mensagem de erro
   Then Continuo na mesma pagina
+
+Scenario: Gerar estatisticas sobre o desempenho de uma escola ainda não cadastrada
+    Given Eu estou na pagina de visualizacao de estatisticas para escolas
+    Given A escola "IFPE" ainda nao cadastrada
+    When Eu tentar ver estatisticas sobre a escola "IFPE" para o formulario "Sistema Nervoso"
+    Then Nada acontece e continuo na mesma pagina
