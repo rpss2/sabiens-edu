@@ -20,6 +20,8 @@ export class EstSchoolComponent implements OnInit {
     noQuest : boolean = false;
     noSchool : boolean = false;
     qtd : number;
+    msgQuest : string = "Nenhum questionario sobre esse sistema foi cadastrado.";
+    msgSchool : string = "Escola não cadastrada no sistema.";
 
     getForms(e: string, s: string) : void {
         this.isSchool(e);

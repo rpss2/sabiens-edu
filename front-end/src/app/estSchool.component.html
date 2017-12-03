@@ -4,15 +4,15 @@
     <tr>
         <td><label>Escola </label></td>
         <td><input [(ngModel)]="escola" name="escola"></td>
-        <td *ngIf="noSchool" name="msgErro">
-            Escola não cadastrada no sistema.
+        <td *ngIf="noSchool">
+            <input name="msgErro" [(ngModel)]="msgSchool" disabled>
         </td>
     </tr>
     <tr>
         <td><label>Sistema </label></td>
         <td><input [(ngModel)]="sistema" name="sistema"></td>
         <td *ngIf="noQuest">
-            Nenhum questionario sobre esse sistema foi cadastrado.
+            <input name="msgErroForm" disabled [(ngModel)]="msgQuest">
         </td>
     </tr>
     <tr>
