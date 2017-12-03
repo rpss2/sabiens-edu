@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html (mousemove)="onMove()">
+<table>
+    <tr>
+        <td><label>Escola </label></td>
+        <td><input [(ngModel)]="escola" name="escola"></td>
+    </tr>
+    <tr>
+        <td><label>Turma </label></td>
+        <td><input [(ngModel)]="turma" name="turma"></td>
+    </tr>
+    <tr>
+        <td><label>Sistema </label></td>
+        <td><input [(ngModel)]="sistema" name="sistema"></td>
+        <td *ngIf="noStudent" name="msgErro">
+            Nenhum aluno respondeu a esse questionario.
+        </td>
+    </tr>
+    <tr>
+        <td><button (click)="getAlunos(escola, turma, sistema)">Listar Alunos</button></td>
+        <td><button (click)="gerarEstatisticas()">Ver Estatisticas</button></td>
+    </tr>
+</table>
 
-</body>
+<table>
+    <tr>
+        <th>Alunos</th>
+    </tr>
+    <tr *ngFor="let a of alunos" name="studentsList">
+        <td name="namelist">{{a.nome}}</td>
+    </tr>
+</table>
 </html>
