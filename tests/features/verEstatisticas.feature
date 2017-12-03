@@ -8,3 +8,11 @@ Scenario: Visualizar estatísticas sobre o desempenho de uma turma em um questio
   When Eu tentar ver estatisticas sobre a turma "Terceirao"
   Then Eu vejo uma mensagem de erro
   Then Continuo na mesma pagina
+
+Scenario: Ver estatisticas sobre o desempenho de uma escola para um questionario ainda não cadastrado
+  Given Eu estou na pagina de visualizacao de estatisticas para escolas
+  Given Eu quero gerar estatisticas sobre a escola "CAp"
+  Given Nenhum questionario sobre "Sistema Cardiovascular" foi cadastrado
+  When Eu tentar ver estatisticas sobre a escola "CAp"
+  Then Eu vejo uma mensagem de erro
+  Then Continuo na mesma pagina
