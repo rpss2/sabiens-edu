@@ -27,9 +27,11 @@ export class EstClassComponent implements OnInit {
     getAlunos(e: string, t: string, s: string): void {
         this.alunos = [];
         this.qtd = 0;
-        var alunos = this.estatisticasService.getAlunos(e, t, s);
-        if(alunos) {
-            this.alunos = alunos;
+        if(!this.invalidArgument([e, t, s])) {
+            var alunos = this.estatisticasService.getAlunos(e, t, s);
+            if (alunos) {
+                this.alunos = alunos;
+            }
         }
     }
 
@@ -40,6 +42,15 @@ export class EstClassComponent implements OnInit {
         } else {
             alert("Nenhum aluno respondeu a esse questionario.");
         }
+    }
+
+    invalidArgument(value : string[]) : boolean {
+        for(let k in value) {
+            if(!value[k]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     ngOnInit(): void {

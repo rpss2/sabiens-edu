@@ -10,14 +10,13 @@ import {Resposta} from "./resposta";
 @Injectable()
 export class EstatisticasService {
 
-    escolas: Escola[] = [];
+    escolas: Escola[] = [new Escola("CAp")];
     turmas: Turma[] = [];
     alunos: Aluno[] = [];
     formularios : Formulario[] = [];
 
     addDados() : void {
         if(this.escolas.length === 0) {
-            this.escolas.push(new Escola("CAp"));
 
             var form = new Formulario("Sistema Nervoso", "", "");
             form.adicionarQuestao(new Questao("Primeira Questao", "", ["A", "B", "C"], 0), 0);
@@ -29,11 +28,6 @@ export class EstatisticasService {
             aluno.addResposta(new Resposta(form, [0, 2]));
             turma.addAluno(aluno);
             this.escolas[0].addTurma(turma);
-
-            var form2 = new Formulario("Sistema Redprodutor", "", "");
-            form2.adicionarQuestao(new Questao("Primeira Questao", "", ["A", "B", "C"], 0), 0);
-            form2.adicionarQuestao(new Questao("Segunda Questao", "", ["A", "B", "C"], 2), 1);
-            this.formularios.push(form2);
 
             this.turmas.push(turma);
             this.alunos.push(aluno);
@@ -57,7 +51,6 @@ export class EstatisticasService {
 
     getAlunos(e: string, t: string, s: string) : Aluno[] {
         var alunos : Aluno[] = [];
-        var respostas : Resposta[] = [];
         var escola : Escola;
         var turma : Turma;
 
