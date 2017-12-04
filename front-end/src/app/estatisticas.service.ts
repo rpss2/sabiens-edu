@@ -29,6 +29,11 @@ export class EstatisticasService {
             turma.addAluno(aluno);
             this.escolas[0].addTurma(turma);
 
+            var form2 = new Formulario("Sistema Cardiovascular", "", "");
+            form.adicionarQuestao(new Questao("Primeira Questao", "", ["A", "B", "C"], 0), 0);
+            form.adicionarQuestao(new Questao("Segunda Questao", "", ["A", "B", "C"], 1), 1);
+            this.formularios.push(form2);
+
             this.turmas.push(turma);
             this.alunos.push(aluno);
         }
