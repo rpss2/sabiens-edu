@@ -16,27 +16,30 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         await $("a[name='school']").click();
     });
 
-    Given(/^A escola "([^\"]*)" ainda nao cadastrada$/, async(escola) => {
+    Given(/^Eu quero gerar estatisticas sobre a escola "([^\"]*)"$/, async(escola) => {
         await $("input[name='escola']").sendKeys(<string> escola);
-        await element(by.buttonText('Verificar Escola')).click();
-        var allSchool : ElementArrayFinder = element.all(by.name('schoolName'));
-        await allSchool;
-        await allSchool.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
     });
 
-    When(/^Eu tentar ver estatisticas sobre a escola "([^\"]*)" para o formulario "([^\"]*)"$/, async (escola, form) => {
-        await $("input[name='escola']").getText().then(text => text === escola);
-        await $("input[name='sistema']").sendKeys(<string> form);
+    Given(/^Nenhum questionario sobre "([^\"]*)" foi cadastrado$/, async (sistema) => {
+        await $("input[name='sistema']").sendKeys(<string> sistema);
+        await element(by.buttonText('Listar Formularios')).click();
+        var allQuests : ElementArrayFinder = element.all(by.name('questionarioList'));
+        await allQuests;
+        await allQuests.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
+    });
+
+    When(/^Eu tentar ver estatisticas sobre a escola "([^\"]*)"$/, async (escola) => {
+        await $("input[name='escola']").getText().then(text => text === "");
         await element(by.buttonText('Ver Estatisticas')).click();
     });
 
     Then(/^Eu vejo uma mensagem de erro$/, async () => {
         var alert = browser.switchTo().alert();
-        await expect(alert.getText()).to.eventually.equal("Questionário não cadastrado.");
+        await expect(alert.getText()).to.eventually.equal("Nenhum questionario sobre esse sistema foi cadastrado.");
         alert.dismiss();
     });
 
     Then(/^Continuo na mesma pagina$/, async () => {
-        await browser.get("http://localhost:4200/estClass");
+        await browser.get("http://localhost:4200/estSchool");
     });
-})
+});

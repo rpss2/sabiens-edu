@@ -10,13 +10,14 @@ import {Resposta} from "./resposta";
 @Injectable()
 export class EstatisticasService {
 
-    escolas: Escola[] = [new Escola("CAp")];
+    escolas: Escola[] = [];
     turmas: Turma[] = [];
     alunos: Aluno[] = [];
     formularios : Formulario[] = [];
 
     addDados() : void {
         if(this.escolas.length === 0) {
+            this.escolas.push(new Escola("CAp"));
 
             var form = new Formulario("Sistema Nervoso", "", "");
             form.adicionarQuestao(new Questao("Primeira Questao", "", ["A", "B", "C"], 0), 0);
