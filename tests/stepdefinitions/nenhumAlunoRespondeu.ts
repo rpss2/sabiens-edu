@@ -20,7 +20,7 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         await $("input[name='turma']").sendKeys(<string> turma);
         await $("input[name='sistema']").sendKeys(<string> sistema);
         await element(by.buttonText('Listar Alunos')).click();
-        var allStudents : ElementArrayFinder = element.all(by.name('nameList'));
+        var allStudents : ElementArrayFinder = element.all(by.name('namelist'));
         await allStudents;
         await allStudents.then(elems => expect(Promise.resolve(elems.length)).to.eventually.equal(0));
     });
@@ -34,7 +34,7 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     Then(/^Eu vejo uma mensagem de erro$/, async () => {
         var alert = browser.switchTo().alert();
         await expect(alert.getText()).to.eventually.equal("Nenhum aluno respondeu a esse questionario.");
-        alert.dismiss();
+        await alert.dismiss();
     });
 
     Then(/^Continuo na mesma pagina$/, async () => {

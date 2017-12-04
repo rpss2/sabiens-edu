@@ -4,7 +4,7 @@ Feature:  As a Administrador
 
   Scenario: Visualizar estatísticas sobre o desempenho de uma turma em um questionário, quando nenhum aluno daquela turma respondeu
     Given Eu estou na pagina de visualizacao de estatisticas para turmas
-    Given Nenhum aluno da turma "Terceirao" que pertence a escola "CAp" respondeu o formulario sobre "Sistema Nervoso"
+    Given Nenhum aluno da turma "Terceirao" que pertence a escola "CAp" respondeu o formulario sobre "Sistema Cardiovascular"
     When Eu tentar ver estatisticas sobre a turma "Terceirao"
     Then Eu vejo uma mensagem de erro
     Then Continuo na mesma pagina
