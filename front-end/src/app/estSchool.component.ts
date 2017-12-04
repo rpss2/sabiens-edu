@@ -17,7 +17,6 @@ export class EstSchoolComponent implements OnInit {
     escolas : Escola[];
     escola: string;
     sistema: string;
-    noQuest : boolean = false;
     noSchool : boolean = false;
     qtd : number;
 
@@ -48,18 +47,20 @@ export class EstSchoolComponent implements OnInit {
         var school;
         this.qtd = 0;
         this.getForms(escola, sistema);
-        if(this.formularios.length > 0) {
-            school = this.escolas[0];
-            var turmas = school.turmas;
-            for(let k in turmas) {
-                var turma = turmas[k].nome;
-                var alunos = this.estatisticasService.getAlunos(escola, turma, sistema);
-                if(alunos)
-                    this.qtd += alunos.length;
+        //if(!this.noSchool) {
+            if (this.formularios.length > 0) {
+                school = this.escolas[0];
+                var turmas = school.turmas;
+                for (let k in turmas) {
+                    var turma = turmas[k].nome;
+                    var alunos = this.estatisticasService.getAlunos(escola, turma, sistema);
+                    if (alunos)
+                        this.qtd += alunos.length;
+                }
+            } else {
+                alert("Nenhum questionario sobre esse sistema foi cadastrado.");
             }
-        } else {
-            alert("Nenhum questionario sobre esse sistema foi cadastrado.");
-        }
+        
     }
 
     ngOnInit(): void {
