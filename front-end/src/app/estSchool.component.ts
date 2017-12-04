@@ -38,7 +38,6 @@ export class EstSchoolComponent implements OnInit {
             this.escolas.push(esc);
             this.noSchool = false;
         } else {
-            alert("Escola não cadastrada no sistema.");
             this.noSchool = true;
         }
     }

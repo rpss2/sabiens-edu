@@ -11,7 +11,7 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
     setDefaultTimeout(60 * 1000);
 
     Given(/^Eu estou na pagina de visualizacao de estatisticas para escolas$/, async () => {
-        await browser.get("http://localhost:4200");
+        await browser.get("http://localhost:4200/estatisticas");
         //await expect(browser.getTitle()).to.eventually.equal('Feedback');
         await $("a[name='school']").click();
     });
@@ -30,13 +30,13 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
         await element(by.buttonText('Ver Estatisticas')).click();
     });
 
-    Then(/^Eu vejo uma mensagem de erro$/, async () => {
+    Then(/^Eu fico vendo uma mensagem de erro$/, async () => {
         var alert = browser.switchTo().alert();
         await expect(alert.getText()).to.eventually.equal("Escola nao cadastrada.");
         await alert.dismiss();
     });
 
-    Then(/^Continuo na mesma pagina$/, async () => {
+    Then(/^Permaneco na mesma pagina$/, async () => {
         await browser.get("http://localhost:4200/estSchool");
     });
 })

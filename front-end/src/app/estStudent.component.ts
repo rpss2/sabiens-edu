@@ -54,6 +54,7 @@ export class EstStudentComponent implements OnInit {
                 this.flag = true;
             } else {
                 this.flag = false;
+                alert("Nenhum aluno respondeu a esse questionario.");
             }
         }
     }

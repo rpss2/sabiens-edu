@@ -10,8 +10,8 @@ defineSupportCode(function ({ Given, When, Then, setDefaultTimeout }) {
 
     setDefaultTimeout(60 * 1000);
 
-    Given(/^Eu estou na pagina de visualizacao de estatisticas para escolas$/, async () => {
-        await browser.get("http://localhost:4200");
+    Given(/^Eu estou na pagina de visualizacao de estatisticas para as escolas$/, async () => {
+        await browser.get("http://localhost:4200/estatisticas");
         //await expect(browser.getTitle()).to.eventually.equal('Feedback');
         await $("a[name='school']").click();
     });

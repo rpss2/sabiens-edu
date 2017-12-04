@@ -6,11 +6,11 @@ Feature:  As a Administrador
     Given Eu estou na pagina de visualizacao de estatisticas para turmas
     Given Nenhum aluno da turma "Terceirao" que pertence a escola "CAp" respondeu o formulario sobre "Sistema Cardiovascular"
     When Eu tentar ver estatisticas sobre a turma "Terceirao"
-    Then Eu vejo uma mensagem de erro
-    Then Continuo na mesma pagina
+    Then Eu consigo ver uma mensagem de erro
+    Then Fico na mesma pagina
 
   Scenario: Ver estatisticas sobre o desempenho de uma escola para um questionario ainda não cadastrado
-    Given Eu estou na pagina de visualizacao de estatisticas para escolas
+    Given Eu estou na pagina de visualizacao de estatisticas para as escolas
     Given Eu quero gerar estatisticas sobre a escola "CAp"
     Given Nenhum questionario sobre "Sistema Locomotor" foi cadastrado
     When Eu tentar ver estatisticas sobre a escola "CAp"
@@ -21,8 +21,8 @@ Feature:  As a Administrador
     Given Eu estou na pagina de visualizacao de estatisticas para escolas
     Given A escola "IFPE" ainda nao cadastrada
     When Eu tentar ver estatisticas sobre a escola "IFPE" para o formulario "Sistema Nervoso"
-    Then Eu vejo uma mensagem de erro
-    Then Continuo na mesma pagina
+    Then Eu fico vendo uma mensagem de erro
+    Then Permaneco na mesma pagina
 
   Scenario: Ver estatísticas sobre o desempenho de um aluno em um questionário
 
